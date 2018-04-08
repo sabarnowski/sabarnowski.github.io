@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Access Control</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300:400:500:700" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <section class="container">
+        <div class="logo_imagen">
+            <a href="/"><img src="/img/logo_carriots.png"></a>
+        </div>
+        <div class="titulo">
+            <p class="txt-titulo">Access Control</p>
+            <p class="txt-subtitulo">Type your credentials</p>
+        </div>
+        <div class="formulario">
+            <form action="/open-door" method="POST">
+                <input type="text" name="username" placeholder="User" class="txt_form" /><br><br>
+                <input type="password" name="password" placeholder="Password" class="txt_form" /><br><br>
+                <div class="group-puerta">
+                    <p class="txt-lbl-puerta">Choose a door</p>
+                    <select name="puerta">
+                        <option value="door-1">Main</option>
+						<option value="door-2">Data center</option>
+                    </select>
+                </div>
+                <input type="submit" value="Open door" class="btn_form">
+            </form>
+        </div>
+        <div id='response' class="response-carriots">
+        {% for msg in app.session.flashbag.get('success') %}
+              {{ msg }}
+        {% endfor %}
+        {% if error is defined %}
+            {{ error }}
+        {% endif %}
+        </div>
+    </section>
+</body>
+</html>
